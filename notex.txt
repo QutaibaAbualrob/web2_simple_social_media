@@ -30,8 +30,7 @@ Frontend part:
 
     Init app using vite:
 
-        npm create vite@latest my-app -- --template react
-
+        npm create vite@latest social-front
 
 Sources:
 
