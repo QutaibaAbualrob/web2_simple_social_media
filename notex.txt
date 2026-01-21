@@ -22,7 +22,7 @@ Backend part:
             dotnet add package Microsoft.EntityFrameworkCore.Tools --version 9.0.0
             dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 9.0.0
 
-        
+
                 
 
 
@@ -32,3 +32,8 @@ Frontend part:
 
         npm create vite@latest my-app -- --template react
 
+
+Sources:
+
+Models/Database design:
+    https://www.geeksforgeeks.org/sql/how-to-design-database-for-social-media-platform/
