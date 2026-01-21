@@ -1,0 +1,34 @@
+
+
+
+
+Backend part:
+
+    Init app using webapi temp, returns JSON:
+
+        dotnet new webapi -n social_api
+
+    Run app:
+        dotnet run
+
+    Make a local enviorment:
+        dotnet add package Newtonsoft.json
+
+        using Newtonsoft.Json;
+
+        Download 9.0 DOTNET depnednices:
+            dotnet add package Microsoft.EntityFrameworkCore --version 9.0.0
+            dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 9.0.0
+            dotnet add package Microsoft.EntityFrameworkCore.Tools --version 9.0.0
+            dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 9.0.0
+
+        
+                
+
+
+Frontend part:
+
+    Init app using vite:
+
+        npm create vite@latest my-app -- --template react
+
