@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-using SocialMediaAPI.Models;
 
-namespace SocialMediaAPI
+
+namespace SocialMediaAPI.Models
 {
 
     public class Like
@@ -18,6 +18,8 @@ namespace SocialMediaAPI
 
         public DateTime TimeStamp = DateTime.UtcNow;
 
+        public Post Post {get; set;} = null!;
+        public User User {get; set;} = null!;
 
     }
 }

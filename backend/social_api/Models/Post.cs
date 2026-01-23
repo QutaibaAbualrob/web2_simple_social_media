@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 using SocialMediaAPI.Enums;
-using SocialMediaAPI.Models;
 
-namespace SocialMediaAPI
+
+namespace SocialMediaAPI.Models
 {
     public class Post
     {
@@ -24,7 +24,9 @@ namespace SocialMediaAPI
 
         public DateTime TimeStamp {get; set;} = DateTime.UtcNow;
 
+        public User User {get; set;} = null!;
         
+        public ICollection<Comment> Comments {get; set;} = new List<Comment>();
     }
 
 }

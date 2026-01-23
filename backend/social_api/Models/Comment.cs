@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 using SocialMediaAPI.Models;
 
-namespace SocialMediaAPI
+namespace SocialMediaAPI.Models
 {
 
     public class Comment
@@ -19,6 +19,8 @@ namespace SocialMediaAPI
 
         public DateTime TimeStamp {get; set;} = DateTime.UtcNow;
 
+        public Post Post {get; set;} = null!;
+        public User User {get; set;} = null!;
     }
 
 }
