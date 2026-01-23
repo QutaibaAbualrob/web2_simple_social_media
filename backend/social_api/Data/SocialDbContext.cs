@@ -19,7 +19,7 @@ public class ApplicationDbContext : DbContext
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // User - Posts relation
+        // Post - User relation
         modelBuilder.Entity<Post>()
             .HasOne(post => post.User)
             .WithMany(user => user.Posts)
@@ -31,7 +31,17 @@ public class ApplicationDbContext : DbContext
         .WithMany(user => user.Likes)
         .HasForeignKey(like => like.UserId);
 
+        // Comment - User rleation
+        modelBuilder.Entity<Comment>()
+        .HasOne(comment => comment.User)
+        .WithMany(user => user.Comments)
+        .HasForeignKey(comment => comment.UserId);
 
+        // Post - Comment relation
+        modelBuilder.Entity<Comment>()
+        .HasOne(comment => comment.Post)
+        .WithMany(post => post.Comments)
+        .HasForeignKey(comment => comment.PostId);
     }
 
    
