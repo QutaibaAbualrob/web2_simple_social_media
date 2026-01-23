@@ -17,7 +17,7 @@ namespace SocialMediaAPI.Models
         public int UserId {get; set;}
 
         [ReadOnly(true)]
-        public DateTime TimeStamp = DateTime.UtcNow;
+        public DateTime TimeStamp { get; set; } = DateTime.UtcNow;
 
         public Post Post {get; set;} = null!;
         public User User {get; set;} = null!;
