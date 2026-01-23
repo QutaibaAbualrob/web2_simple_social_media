@@ -29,7 +29,11 @@ Backend part:
             dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 9.0.0
             dotnet add package Microsoft.EntityFrameworkCore.Tools --version 9.0.0
             dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 9.0.0
+            dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 9.0.0
+            dotnet tool install -g dotnet-ef
 
+        Migrations :
+            dotnet ef migrations add initialcreate
 
                 
 
@@ -45,4 +49,5 @@ Sources:
     1- Models/Database design:
         https://www.geeksforgeeks.org/sql/how-to-design-database-for-social-media-platform/
 
-    
+    2- Entity Framework Core:
+        https://www.youtube.com/playlist?list=PLdo4fOcmZ0oX7uTkjYwvCJDG2qhcSzwZ6
