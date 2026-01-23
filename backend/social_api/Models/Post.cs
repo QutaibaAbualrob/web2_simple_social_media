@@ -21,8 +21,8 @@ namespace SocialMediaAPI
         public  MediaType MediaType {get; set;}
         
         public string? MediaURL {get; set;}
-        
-        public DateTime TimeStamp {get; set;}
+
+        public DateTime TimeStamp {get; set;} = DateTime.UtcNow;
 
         
     }
