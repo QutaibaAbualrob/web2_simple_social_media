@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 using SocialMediaAPI.Models;
 
@@ -17,7 +18,8 @@ namespace SocialMediaAPI.Models
         [MaxLength(300)]
         public string Content {get; set;} = null!;
 
-        public DateTime TimeStamp {get; set;} = DateTime.UtcNow;
+        [ReadOnly(true)]
+        public DateTime TimeStamp = DateTime.UtcNow;
 
         public Post Post {get; set;} = null!;
         public User User {get; set;} = null!;

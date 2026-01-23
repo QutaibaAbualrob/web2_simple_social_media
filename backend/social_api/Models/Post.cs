@@ -1,4 +1,5 @@
 
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,7 +23,8 @@ namespace SocialMediaAPI.Models
         
         public string? MediaURL {get; set;}
 
-        public DateTime TimeStamp {get; set;} = DateTime.UtcNow;
+        [ReadOnly(true)]
+        public DateTime TimeStamp = DateTime.UtcNow;
 
         public User User {get; set;} = null!;
         

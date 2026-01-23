@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -33,7 +34,8 @@ namespace SocialMediaAPI.Models
         
         public string ProfilePictureUrl {get; set;} = null!;
 
-        public DateTime CreatedAt {get; set;} = DateTime.UtcNow;
+        [ReadOnly(true)]
+        public DateTime CreatedAt = DateTime.UtcNow;
 
         public DateTime? ChangedAt {get; set;} 
 
@@ -41,7 +43,7 @@ namespace SocialMediaAPI.Models
         public ICollection<Comment> Comments {get; set;} = new List<Comment>();
         
         public ICollection<Like> Likes {get; set;} = new List<Like>();
-        
+
     }   
 
     

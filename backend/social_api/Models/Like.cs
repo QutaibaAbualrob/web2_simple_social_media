@@ -1,4 +1,4 @@
-
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,6 +16,7 @@ namespace SocialMediaAPI.Models
         public int CommentId {get; set;}
         public int UserId {get; set;}
 
+        [ReadOnly(true)]
         public DateTime TimeStamp = DateTime.UtcNow;
 
         public Post Post {get; set;} = null!;
