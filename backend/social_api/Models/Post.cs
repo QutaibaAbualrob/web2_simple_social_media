@@ -23,7 +23,7 @@ namespace SocialMediaAPI.Models
         
         public string MediaURL {get; set;} = null!;
 
-        [ReadOnly(true)]
+        
         public DateTime TimeStamp { get; set; } = DateTime.UtcNow;
 
         public User User {get; set;} = null!;

@@ -18,7 +18,7 @@ namespace SocialMediaAPI.Models
         [MaxLength(300)]
         public string Content {get; set;} = null!;
 
-        [ReadOnly(true)]
+        
         public DateTime TimeStamp { get; set; } = DateTime.UtcNow;
 
         public Post Post {get; set;} = null!;

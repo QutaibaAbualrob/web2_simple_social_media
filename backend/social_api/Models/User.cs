@@ -34,7 +34,7 @@ namespace SocialMediaAPI.Models
         
         public string ProfilePictureUrl {get; set;} = null!;
 
-        [ReadOnly(true)]
+        
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public DateTime? ChangedAt {get; set;} 
