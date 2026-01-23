@@ -22,5 +22,6 @@ namespace SocialMediaAPI.Models
         public Post Post {get; set;} = null!;
         public User User {get; set;} = null!;
 
+        public Comment Comment {get; set;} = null!;
     }
 }

@@ -19,9 +19,9 @@ namespace SocialMediaAPI.Models
         [MaxLength(5000)]
         public string Content {get; set;} = null!;
 
-        public  MediaType MediaType {get; set;}
+        public  MediaType MediaType {get; set;} = MediaType.None;
         
-        public string? MediaURL {get; set;}
+        public string MediaURL {get; set;} = null!;
 
         [ReadOnly(true)]
         public DateTime TimeStamp = DateTime.UtcNow;
@@ -29,6 +29,7 @@ namespace SocialMediaAPI.Models
         public User User {get; set;} = null!;
         
         public ICollection<Comment> Comments {get; set;} = new List<Comment>();
+        public ICollection<Like> Likes {get; set;} = new List<Like>();
     }
 
 }

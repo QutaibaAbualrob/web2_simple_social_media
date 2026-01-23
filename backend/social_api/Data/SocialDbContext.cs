@@ -8,20 +8,31 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
         : base(options) { }
     
-    // DbSet for each entity
+
     public DbSet<User> Users { get; set; }
     public DbSet<Post> Posts { get; set; }
+
+    // NOT USED
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Like> Likes { get; set; }
 
     
-    // Configure relationships
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // User -> Posts relationship
+        // User - Posts relation
         modelBuilder.Entity<Post>()
-            .HasOne(p => p.User)
-            .WithMany(u => u.Posts)
+            .HasOne(post => post.User)
+            .WithMany(user => user.Posts)
             .HasForeignKey(p => p.UserId);
+
+        // Like - User relation 
+        modelBuilder.Entity<Like>()
+        .HasOne(like => like.User)
+        .WithMany(user => user.Likes)
+        .HasForeignKey(like => like.UserId);
+
+
     }
+
+   
 }
