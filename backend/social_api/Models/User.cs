@@ -1,6 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using SocialMediaAPI.Models;
+
+
 namespace SocialMediaAPI.Models
 {
     
@@ -12,6 +15,7 @@ namespace SocialMediaAPI.Models
         [Required]
         [MaxLength(32)]
         public string Username {get; set;} = null!;
+
         [Required]
         [EmailAddress]
         [MaxLength(100)]
@@ -29,7 +33,6 @@ namespace SocialMediaAPI.Models
         
         public string? ProfilePictureUrl {get; set;}
 
-        [Required]
         public DateTime CreatedAt {get; set;} = DateTime.UtcNow;
 
         public DateTime? ChangedAt {get; set;} 

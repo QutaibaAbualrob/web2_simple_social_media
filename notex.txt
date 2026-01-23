@@ -1,5 +1,13 @@
 
 
+Content constraints:
+
+    Max length:
+        comment : 300
+        post : 5000
+        name : 100
+
+    
 
 
 Backend part:
@@ -11,7 +19,7 @@ Backend part:
     Run app:
         dotnet run
 
-    Make a local enviorment:
+    Install packages:
         dotnet add package Newtonsoft.json
 
         using Newtonsoft.Json;
@@ -34,5 +42,7 @@ Frontend part:
 
 Sources:
 
-Models/Database design:
-    https://www.geeksforgeeks.org/sql/how-to-design-database-for-social-media-platform/
+    1- Models/Database design:
+        https://www.geeksforgeeks.org/sql/how-to-design-database-for-social-media-platform/
+
+    
