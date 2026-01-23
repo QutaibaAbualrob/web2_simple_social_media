@@ -16,7 +16,7 @@ namespace SocialMediaAPI
         public int UserId {get; set;}
 
         [MaxLength(5000)]
-        public string? Content {get; set;}
+        public string Content {get; set;} = null!;
 
         public  MediaType MediaType {get; set;}
         

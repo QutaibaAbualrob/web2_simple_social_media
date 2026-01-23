@@ -12,26 +12,26 @@ namespace SocialMediaAPI.Models
         [Key]
         public int UserId {get; set;}
 
-        [Required]
+        
         [MaxLength(32)]
         public string Username {get; set;} = null!;
 
-        [Required]
+        
         [EmailAddress]
         [MaxLength(100)]
         public string Email {get; set;} = null!;
         
-        [Required]
+        
         [MaxLength(20)]
         public string PasswordSalt {get; set;} = null!;
         
         [MaxLength(100)]
-        public string? Name {get; set;}
+        public string Name {get; set;}= null!;
         
         [MaxLength(500)]
-        public string? Bio {get; set;}
+        public string Bio {get; set;} = null!;
         
-        public string? ProfilePictureUrl {get; set;}
+        public string ProfilePictureUrl {get; set;} = null!;
 
         public DateTime CreatedAt {get; set;} = DateTime.UtcNow;
 
