@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
+
 using SocialMediaAPI.Models;
 
 public class ApplicationDbContext : DbContext
