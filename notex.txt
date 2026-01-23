@@ -36,9 +36,13 @@ Backend part:
             dotnet ef migrations add initialcreate
 
             dotnet ef migrations add initfix
-            
+
             dotnet ef database update
 
+        Controllers:
+
+            Test:
+                Simple get, post methods to test the database
 
 Frontend part:
 
