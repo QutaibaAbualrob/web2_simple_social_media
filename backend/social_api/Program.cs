@@ -18,7 +18,8 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
+// Dont use HTTPS
+//app.UseHttpsRedirection();
 
 var summaries = new[]
 {

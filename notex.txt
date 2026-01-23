@@ -35,7 +35,9 @@ Backend part:
         Migrations :
             dotnet ef migrations add initialcreate
 
-                
+            dotnet ef migrations add initfix
+            
+            dotnet ef database update
 
 
 Frontend part:
