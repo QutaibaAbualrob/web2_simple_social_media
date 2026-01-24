@@ -1,0 +1,14 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+E:\visualcode\web2_proj\web2_simple_social_media\backend\social_api\Program.cs(31,40): warning CS8604: Possible null reference argument for parameter 's' in 'byte[] Encoding.GetBytes(string s)'. [E:\visualcode\web2_proj\web2_simple_social_media\backend\social_api\social_api.csproj]
+E:\visualcode\web2_proj\web2_simple_social_media\backend\social_api\Controllers\AuthController.cs(93,67): warning CS8604: Possible null reference argument for parameter 's' in 'byte[] Encoding.GetBytes(string s)'. [E:\visualcode\web2_proj\web2_simple_social_media\backend\social_api\social_api.csproj]
+  social_api -> E:\visualcode\web2_proj\web2_simple_social_media\backend\social_api\bin\Debug\net9.0\social_api.dll
+
+Build succeeded.
+
+E:\visualcode\web2_proj\web2_simple_social_media\backend\social_api\Program.cs(31,40): warning CS8604: Possible null reference argument for parameter 's' in 'byte[] Encoding.GetBytes(string s)'. [E:\visualcode\web2_proj\web2_simple_social_media\backend\social_api\social_api.csproj]
+E:\visualcode\web2_proj\web2_simple_social_media\backend\social_api\Controllers\AuthController.cs(93,67): warning CS8604: Possible null reference argument for parameter 's' in 'byte[] Encoding.GetBytes(string s)'. [E:\visualcode\web2_proj\web2_simple_social_media\backend\social_api\social_api.csproj]
+    2 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.78

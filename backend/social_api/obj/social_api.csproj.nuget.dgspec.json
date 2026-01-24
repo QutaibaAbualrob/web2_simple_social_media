@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\quta\\Desktop\\web2_project_social_media_app\\backend\\social_api\\social_api.csproj": {}
+    "E:\\visualcode\\web2_proj\\web2_simple_social_media\\backend\\social_api\\social_api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\quta\\Desktop\\web2_project_social_media_app\\backend\\social_api\\social_api.csproj": {
+    "E:\\visualcode\\web2_proj\\web2_simple_social_media\\backend\\social_api\\social_api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\quta\\Desktop\\web2_project_social_media_app\\backend\\social_api\\social_api.csproj",
+        "projectUniqueName": "E:\\visualcode\\web2_proj\\web2_simple_social_media\\backend\\social_api\\social_api.csproj",
         "projectName": "social_api",
-        "projectPath": "C:\\Users\\quta\\Desktop\\web2_project_social_media_app\\backend\\social_api\\social_api.csproj",
+        "projectPath": "E:\\visualcode\\web2_proj\\web2_simple_social_media\\backend\\social_api\\social_api.csproj",
         "packagesPath": "C:\\Users\\quta\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\quta\\Desktop\\web2_project_social_media_app\\backend\\social_api\\obj\\",
+        "outputPath": "E:\\visualcode\\web2_proj\\web2_simple_social_media\\backend\\social_api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -67,6 +67,10 @@
               "version": "[9.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[9.0.0, )"
             },
@@ -100,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

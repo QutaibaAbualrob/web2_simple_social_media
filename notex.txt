@@ -1,5 +1,13 @@
 
 
+Content constraints:
+
+    Max length:
+        comment : 300
+        post : 5000
+        name : 100
+
+    
 
 
 Backend part:
@@ -11,7 +19,7 @@ Backend part:
     Run app:
         dotnet run
 
-    Make a local enviorment:
+    Install packages:
         dotnet add package Newtonsoft.json
 
         using Newtonsoft.Json;
@@ -21,10 +29,57 @@ Backend part:
             dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 9.0.0
             dotnet add package Microsoft.EntityFrameworkCore.Tools --version 9.0.0
             dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 9.0.0
+            dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 9.0.0
+            dotnet tool install -g dotnet-ef
+
+        Migrations :
+            dotnet ef migrations add initialcreate
+
+            dotnet ef migrations add initfix
+
+            dotnet ef database update
+
+        Controllers:
+
+            Test:
+                Simple get, post methods to test the database
+
+            Auth:
 
 
-                
+                Update User Model:
+                    Add PasswordHash field to User.cs
+                    
+                Create DTOs folder:
+                    RegisterRequest.cs (Username, Email, Password, Name)
+                    LoginRequest.cs (Email, Password)
+                    AuthResponse.cs (Token, UserId, Username, Name)
 
+                Configure appsettings.json:
+                    Add JWT section with Key, Issuer, Audience
+
+                Update Program.cs:
+                    Add JWT authentication middleware
+                    Configure TokenValidationParameters
+                    Add app.UseAuthentication() before UseAuthorization()
+
+                Create :
+                    Register endpoint: Creates user, generates JWT token
+                    Login endpoint: Validates credentials, returns JWT token
+                    GenerateJwtToken method: Creates signed JWT with user claims
+
+            
+
+            
+
+Running the app:
+
+    back:
+        dotnet run
+
+    front:
+        npm install
+        npm run dev
 
 Frontend part:
 
@@ -34,5 +89,13 @@ Frontend part:
 
 Sources:
 
-Models/Database design:
-    https://www.geeksforgeeks.org/sql/how-to-design-database-for-social-media-platform/
+    1- Models/Database design:
+        https://www.geeksforgeeks.org/sql/how-to-design-database-for-social-media-platform/
+
+    2- Entity Framework Core:
+        https://www.youtube.com/playlist?list=PLdo4fOcmZ0oX7uTkjYwvCJDG2qhcSzwZ6
+
+    3- JWT:
+        https://learn.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-10.0
+        https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer?view=aspnetcore-10.0
+        https://learn.microsoft.com/en-us/aspnet/core/security/authorization/limitingidentitybyscheme?view=aspnetcore-10.0
