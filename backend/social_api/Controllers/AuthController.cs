@@ -38,7 +38,7 @@ public class AuthController : ControllerBase
             Username = request.Username,
             Email = request.Email,
             Name = request.Name,
-            PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password),  
+            PasswordHash = request.Password,  // Plain text
             Bio = "",
             ProfilePictureUrl = "",
             CreatedAt = DateTime.UtcNow
@@ -65,8 +65,8 @@ public class AuthController : ControllerBase
         // Find user
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
         
-        // Verify password
-        if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
+        // Direct string comparison
+        if (user == null || user.PasswordHash != request.Password)
             return Unauthorized("Invalid credentials");
 
         // Generate token
