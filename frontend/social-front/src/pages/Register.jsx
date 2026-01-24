@@ -61,7 +61,7 @@ const Register = () => {
                         background: 'linear-gradient(to right, #3b82f6, #ec4899)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent'
-                    }}>Join SocialPulse</h1>
+                    }}>Join Qutaibas Social Media</h1>
                     <p style={{ color: 'var(--text-secondary)' }}>Create your account today</p>
                 </div>
 

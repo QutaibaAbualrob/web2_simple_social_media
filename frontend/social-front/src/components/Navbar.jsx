@@ -29,7 +29,7 @@ const Navbar = () => {
             }}>
                 <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Link to="/" style={{ fontSize: '1.5rem', fontWeight: 'bold', background: 'linear-gradient(to right, #3b82f6, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                        SocialPulse
+                        Qutaibas Social Media
                     </Link>
 
                     <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>

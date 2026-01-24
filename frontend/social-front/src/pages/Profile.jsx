@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import api from '../services/api';
-import { User, Mail, Calendar, Edit2, Check, X } from 'lucide-react';
+import { User, Mail, Calendar, Edit2, Check, X, Loader2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { format } from 'date-fns';
+import PostCard from '../components/PostCard'; // Import PostCard
 
 const Profile = () => {
     const { id } = useParams();
@@ -12,6 +13,8 @@ const Profile = () => {
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
     const [isEditing, setIsEditing] = useState(false);
+    const [userPosts, setUserPosts] = useState([]); // New state for user's posts
+    const [postsLoading, setPostsLoading] = useState(true); // New state for posts loading
 
     // Edit form state
     const [editForm, setEditForm] = useState({
@@ -24,13 +27,11 @@ const Profile = () => {
 
     useEffect(() => {
         fetchProfile();
+        fetchUserPosts(); // Fetch user-specific posts
     }, [id]);
 
     const fetchProfile = async () => {
         try {
-            // Logic to fetch user. Our API has /users/me or /users/{id}
-            // If it's your own profile, you might want /users/me but /users/{id} works too if public
-            // However, /users/{id} returns UserDto which might be different than strict "me".
             const res = await api.get(`/users/${id}`);
             setProfile(res.data);
             setEditForm({
@@ -45,6 +46,19 @@ const Profile = () => {
         }
     };
 
+    const fetchUserPosts = async () => {
+        try {
+            setPostsLoading(true);
+            const response = await api.get(`/posts/User/${id}?page=1&pageSize=10`);
+            setUserPosts(response.data);
+        } catch (error) {
+            console.error("Failed to fetch user posts", error);
+            setUserPosts([]); // Clear posts on error
+        } finally {
+            setPostsLoading(false);
+        }
+    };
+
     const handleUpdateProfile = async (e) => {
         e.preventDefault();
         try {
@@ -55,6 +69,10 @@ const Profile = () => {
         } catch (e) {
             alert('Failed to update profile');
         }
+    };
+
+    const handleDeletePost = (postId) => {
+        setUserPosts(userPosts.filter(p => p.postId !== postId));
     };
 
     if (loading) return <div>Loading...</div>;
@@ -136,11 +154,27 @@ const Profile = () => {
                     </div>
                 </div>
 
-                {/* To-Do: List user's posts here if API supports filtering by user. 
-                    The current API GetPosts doesn't seem to support filtering by userId, only pagination.
-                    Adding a 'Personal Feed' would require backend update.
-                    For now, I'll update the visual design but leave the posts empty.
-                */}
+                {/* Display User's Posts */}
+                <div style={{ marginTop: '2rem' }}>
+                    <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>Posts by {profile.username}</h2>
+                    {postsLoading ? (
+                        <div style={{ textAlign: 'center', padding: '2rem' }}>
+                            <Loader2 className="spin" size={32} style={{ animation: 'spin 1s linear infinite' }} />
+                        </div>
+                    ) : (
+                        userPosts.length > 0 ? (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                                {userPosts.map(post => (
+                                    <PostCard key={post.postId} post={post} onDelete={handleDeletePost} />
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
+                                <p style={{ color: 'var(--text-secondary)' }}>This user has no posts yet.</p>
+                            </div>
+                        )
+                    )}
+                </div>
             </div>
         </div>
     );

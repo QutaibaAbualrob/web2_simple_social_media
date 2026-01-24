@@ -83,6 +83,39 @@ namespace SocialMediaAPI.Controllers
             return Ok(post);
         }
 
+        // GET: api/Posts/User/{userId}
+        [HttpGet("User/{userId}")]
+        public async Task<ActionResult<IEnumerable<PostDto>>> GetPostsForUser(int userId, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+        {
+            if (page < 1) page = 1;
+            if (pageSize < 1 || pageSize > 50) pageSize = 10;
+
+            var posts = await _context.Posts
+                .Include(p => p.User)
+                .Include(p => p.Likes)
+                .Include(p => p.Comments)
+                .Where(p => p.UserId == userId)
+                .OrderByDescending(p => p.TimeStamp)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .Select(p => new PostDto
+                {
+                    PostId = p.PostId,
+                    UserId = p.UserId,
+                    Username = p.User.Username,
+                    UserProfilePictureUrl = p.User.ProfilePictureUrl,
+                    Content = p.Content,
+                    MediaUrl = p.MediaURL,
+                    MediaType = p.MediaType,
+                    TimeStamp = p.TimeStamp,
+                    LikesCount = p.Likes.Count,
+                    CommentsCount = p.Comments.Count
+                })
+                .ToListAsync();
+
+            return Ok(posts);
+        }
+
         // POST: api/Posts
         [HttpPost]
         [Authorize]
