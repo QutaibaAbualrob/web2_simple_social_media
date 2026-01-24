@@ -72,6 +72,14 @@ Backend part:
 
             
 
+Running the app:
+
+    back:
+        dotnet run
+
+    front:
+        npm install
+        npm run dev
 
 Frontend part:
 
