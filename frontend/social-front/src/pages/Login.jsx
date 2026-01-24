@@ -21,14 +21,19 @@ const Login = () => {
     };
 
     return (
-        <div style={{
+        <div className="bg-auth-animated bg-auth-grid" style={{
             minHeight: '100vh',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'radial-gradient(circle at center, #1e293b 0%, #0f172a 100%)'
+            padding: '2rem 1rem'
         }}>
-            <div className="card fade-in" style={{ width: '100%', maxWidth: '400px' }}>
+            <div className="bg-auth-base" aria-hidden="true" />
+            <div className="bg-auth-orb bg-auth-orb-1" aria-hidden="true" />
+            <div className="bg-auth-orb bg-auth-orb-2" aria-hidden="true" />
+            <div className="bg-auth-orb bg-auth-orb-3" aria-hidden="true" />
+            <div className="bg-auth-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+            <div className="card fade-in" style={{ width: '100%', maxWidth: '400px', background: 'rgba(30, 41, 59, 0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.08)' }}>
                 <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                     <h1 style={{
                         fontSize: '2rem',
@@ -84,6 +89,7 @@ const Login = () => {
                 <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
                     Don't have an account? <Link to="/register" style={{ color: 'var(--text-accent)', fontWeight: '500' }}>Sign up</Link>
                 </div>
+            </div>
             </div>
         </div>
     );

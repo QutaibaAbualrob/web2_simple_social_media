@@ -52,7 +52,10 @@ const Feed = () => {
     };
 
     return (
-        <div style={{ minHeight: '100vh', backgroundColor: 'var(--bg-primary)' }}>
+        <div className="bg-feed-mesh" style={{ minHeight: '100vh', backgroundColor: 'var(--bg-primary)', position: 'relative' }}>
+            <div className="bg-feed-orb bg-feed-orb-1" aria-hidden="true" />
+            <div className="bg-feed-orb bg-feed-orb-2" aria-hidden="true" />
+            <div className="bg-feed-content">
             <Navbar />
             <div className="container" style={{ padding: '2rem 1rem', maxWidth: '680px' }}>
                 <div style={{ marginBottom: '2rem' }}>
@@ -86,6 +89,7 @@ const Feed = () => {
                         </div>
                     )}
                 </div>
+            </div>
             </div>
 
             <style>{`
