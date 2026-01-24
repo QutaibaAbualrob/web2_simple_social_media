@@ -24,7 +24,7 @@ namespace SocialMediaAPI.Models
         
         
         [MaxLength(20)]
-        public string PasswordSalt {get; set;} = null!;
+        public string PasswordHash {get; set;} = null!;
         
         [MaxLength(100)]
         public string Name {get; set;}= null!;
