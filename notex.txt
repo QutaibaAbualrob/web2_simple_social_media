@@ -44,6 +44,35 @@ Backend part:
             Test:
                 Simple get, post methods to test the database
 
+            Auth:
+
+
+                Update User Model:
+                    Add PasswordHash field to User.cs
+                    
+                Create DTOs folder:
+                    RegisterRequest.cs (Username, Email, Password, Name)
+                    LoginRequest.cs (Email, Password)
+                    AuthResponse.cs (Token, UserId, Username, Name)
+
+                Configure appsettings.json:
+                    Add JWT section with Key, Issuer, Audience
+
+                Update Program.cs:
+                    Add JWT authentication middleware
+                    Configure TokenValidationParameters
+                    Add app.UseAuthentication() before UseAuthorization()
+
+                Create :
+                    Register endpoint: Creates user, generates JWT token
+                    Login endpoint: Validates credentials, returns JWT token
+                    GenerateJwtToken method: Creates signed JWT with user claims
+
+            
+
+            
+
+
 Frontend part:
 
     Init app using vite:

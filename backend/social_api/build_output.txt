@@ -1,0 +1,11 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+E:\visualcode\web2_proj\web2_simple_social_media\backend\social_api\Controllers\CommentController.cs(38,18): error CS1002: ; expected [E:\visualcode\web2_proj\web2_simple_social_media\backend\social_api\social_api.csproj]
+
+Build FAILED.
+
+E:\visualcode\web2_proj\web2_simple_social_media\backend\social_api\Controllers\CommentController.cs(38,18): error CS1002: ; expected [E:\visualcode\web2_proj\web2_simple_social_media\backend\social_api\social_api.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:01.60
