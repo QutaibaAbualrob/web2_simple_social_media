@@ -51,7 +51,7 @@ const CreatePostModal = ({ onClose, onPostCreated }) => {
             >
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
                     <h2 style={{ fontSize: '1.25rem', fontWeight: '600' }}>Create Post</h2>
-                    <button onClick={onClose} className="btn-ghost" style={{ padding: '0.25rem' }}><X size={20} /></button>
+                    <button onClick={onClose} className="btn-ghost" style={{ padding: '0.25rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--bg-tertiary)' }}><X size={20} /></button>
                 </div>
 
                 {error && <div style={{ color: 'var(--error)', marginBottom: '1rem' }}>{error}</div>}
@@ -80,7 +80,7 @@ const CreatePostModal = ({ onClose, onPostCreated }) => {
                         />
                     </div>
 
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem' }}>
                         <div style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
                             {content.length}/5000
                         </div>
@@ -88,6 +88,7 @@ const CreatePostModal = ({ onClose, onPostCreated }) => {
                             type="submit"
                             className="btn-primary"
                             disabled={loading || !content.trim()}
+                            style={{ marginLeft: 'auto', borderRadius: 'var(--radius-md)' }} // Ensure consistent border-radius
                         >
                             {loading ? 'Posting...' : <><Send size={18} style={{ marginRight: '0.5rem' }} /> Post</>}
                         </button>

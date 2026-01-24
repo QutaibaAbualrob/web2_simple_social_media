@@ -33,20 +33,20 @@ const Navbar = () => {
                     </Link>
 
                     <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-                        <Link to="/" title="Feed" className="btn-ghost" style={{ padding: '0.5rem', borderRadius: '50%' }}>
+                        <Link to="/" title="Feed" className="btn-ghost" style={{ padding: '0.5rem', borderRadius: 'var(--radius-md)', border: '1px solid transparent' }}>
                             <Home size={24} />
                         </Link>
 
                         <button
                             onClick={() => setIsModalOpen(true)}
                             className="btn-primary"
-                            style={{ padding: '0.5rem 1rem', borderRadius: 'var(--radius-full)' }}
+                            style={{ padding: '0.5rem 1rem', borderRadius: 'var(--radius-md)', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', border: '1px solid var(--primary-color)' }}
                         >
                             <PlusSquare size={20} />
-                            <span style={{ marginLeft: '0.5rem' }}>Create</span>
+                            <span>Create</span>
                         </button>
 
-                        <Link to={`/profile/${user.userId}`} title="Profile" className="avatar">
+                        <Link to={`/profile/${user.userId}`} title="Profile" className="avatar" style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--bg-tertiary)' }}>
                             {user.profilePictureUrl ? (
                                 <img src={user.profilePictureUrl} alt={user.username} className="avatar" />
                             ) : (
@@ -54,7 +54,7 @@ const Navbar = () => {
                             )}
                         </Link>
 
-                        <button onClick={handleLogout} title="Logout" className="btn-ghost" style={{ padding: '0.5rem', borderRadius: '50%' }}>
+                        <button onClick={handleLogout} title="Logout" className="btn-ghost" style={{ padding: '0.5rem', borderRadius: 'var(--radius-md)', border: '1px solid transparent' }}>
                             <LogOut size={20} />
                         </button>
                     </div>

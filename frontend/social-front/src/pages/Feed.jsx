@@ -78,7 +78,7 @@ const Feed = () => {
                                 <button
                                     onClick={handleLoadMore}
                                     className="btn-secondary"
-                                    style={{ width: '100%', marginTop: '1rem' }}
+                                    style={{ width: '100%', marginTop: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--bg-tertiary)' }}
                                 >
                                     Load More
                                 </button>

@@ -102,7 +102,7 @@ const Profile = () => {
                             </div>
 
                             {isOwnProfile && !isEditing && (
-                                <button onClick={() => setIsEditing(true)} className="btn-secondary">
+                                <button onClick={() => setIsEditing(true)} className="btn-secondary" style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--bg-tertiary)', padding: '1rem 2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                     <Edit2 size={16} /> Edit Profile
                                 </button>
                             )}
@@ -116,7 +116,7 @@ const Profile = () => {
                                 </div>
 
                                 {profile.bio && (
-                                    <div style={{ color: 'var(--text-primary)', lineHeight: '1.6' }}>
+                                    <div style={{ color: 'var(--text-primary)', lineHeight: '1.6', textAlign: 'left' }}>
                                         {profile.bio}
                                     </div>
                                 )}
@@ -146,8 +146,8 @@ const Profile = () => {
                                 </div>
 
                                 <div style={{ display: 'flex', gap: '1rem' }}>
-                                    <button type="submit" className="btn-primary"><Check size={18} /> Save</button>
-                                    <button type="button" onClick={() => setIsEditing(false)} className="btn-secondary"><X size={18} /> Cancel</button>
+                                    <button type="submit" className="btn-primary" style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--primary-color)', padding: '1rem 2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Check size={18} /> Save</button>
+                                    <button type="button" onClick={() => setIsEditing(false)} className="btn-secondary" style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--bg-tertiary)', padding: '1rem 2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><X size={18} /> Cancel</button>
                                 </div>
                             </form>
                         )}
@@ -156,7 +156,7 @@ const Profile = () => {
 
                 {/* Display User's Posts */}
                 <div style={{ marginTop: '2rem' }}>
-                    <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>Posts by {profile.username}</h2>
+                    <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', textAlign: 'left' }}>Posts by {profile.username}</h2>
                     {postsLoading ? (
                         <div style={{ textAlign: 'center', padding: '2rem' }}>
                             <Loader2 className="spin" size={32} style={{ animation: 'spin 1s linear infinite' }} />

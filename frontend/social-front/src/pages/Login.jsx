@@ -76,7 +76,7 @@ const Login = () => {
                         />
                     </div>
 
-                    <button type="submit" className="btn-primary" style={{ marginTop: '1rem' }}>
+                    <button type="submit" className="btn-primary" style={{ marginTop: '1rem', display: 'block', margin: '0 auto', borderRadius: 'var(--radius-md)', border: '1px solid var(--primary-color)', padding: '0.75rem 1.5rem' }}>
                         Sign In
                     </button>
                 </form>

@@ -101,7 +101,7 @@ const PostCard = ({ post, onDelete }) => {
                     </div>
                 </div>
                 {isOwner && (
-                    <button onClick={handleDelete} className="btn-ghost" style={{ color: 'var(--error)', padding: '0.5rem' }}>
+                    <button onClick={handleDelete} className="btn-ghost" style={{ color: 'var(--error)', padding: '0.5rem', borderRadius: 'var(--radius-md)', border: '1px solid transparent' }}>
                         <Trash2 size={18} />
                     </button>
                 )}
@@ -128,7 +128,8 @@ const PostCard = ({ post, onDelete }) => {
                     className="btn-ghost"
                     style={{
                         color: liked ? 'var(--secondary-color)' : 'var(--text-secondary)',
-                        display: 'flex', alignItems: 'center', gap: '0.5rem'
+                        display: 'flex', alignItems: 'center', gap: '0.5rem',
+                        borderRadius: 'var(--radius-md)', border: '1px solid transparent'
                     }}
                 >
                     <Heart size={20} fill={liked ? "currentColor" : "none"} />
@@ -138,7 +139,8 @@ const PostCard = ({ post, onDelete }) => {
                 <button
                     onClick={toggleComments}
                     className="btn-ghost"
-                    style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                    style={{ display: 'flex', alignItems: 'center', gap: '0.5rem',
+                        borderRadius: 'var(--radius-md)', border: '1px solid transparent' }}
                 >
                     <MessageCircle size={20} />
                     <span>{post.commentsCount}</span>
@@ -155,7 +157,7 @@ const PostCard = ({ post, onDelete }) => {
                             onChange={e => setNewComment(e.target.value)}
                             style={{ fontSize: '0.9rem', padding: '0.5rem 1rem' }}
                         />
-                        <button type="submit" className="btn-primary" style={{ padding: '0.5rem 1rem' }}>Post</button>
+                        <button type="submit" className="btn-primary" style={{ padding: '0.5rem 1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--primary-color)' }}>Post</button>
                     </form>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
