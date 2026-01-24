@@ -23,7 +23,7 @@ namespace SocialMediaAPI.Models
         public string Email {get; set;} = null!;
         
         
-        [MaxLength(20)]
+        [MaxLength(255)]
         public string PasswordHash {get; set;} = null!;
         
         [MaxLength(100)]
