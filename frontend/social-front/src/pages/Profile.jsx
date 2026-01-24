@@ -102,7 +102,7 @@ const Profile = () => {
                             </div>
 
                             {isOwnProfile && !isEditing && (
-                                <button onClick={() => setIsEditing(true)} className="btn-secondary" style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--bg-tertiary)', padding: '1rem 2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <button onClick={() => setIsEditing(true)} className="btn-secondary" style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--bg-tertiary)', padding: '0.8rem 1.8rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                     <Edit2 size={16} /> Edit Profile
                                 </button>
                             )}
@@ -131,23 +131,23 @@ const Profile = () => {
                                 </div>
                             </>
                         ) : (
-                            <form onSubmit={handleUpdateProfile} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
+                            <form onSubmit={handleUpdateProfile} style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginTop: '0.5rem', maxWidth: '420px' }}>
                                 <div>
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Name</label>
-                                    <input value={editForm.name} onChange={e => setEditForm({ ...editForm, name: e.target.value })} maxLength={100} />
+                                    <label style={{ display: 'block', marginBottom: '0.3rem', fontSize: '0.8rem' }}>Name</label>
+                                    <input value={editForm.name} onChange={e => setEditForm({ ...editForm, name: e.target.value })} maxLength={100} style={{ padding: '0.5rem 0.75rem' }} />
                                 </div>
                                 <div>
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Bio</label>
-                                    <textarea value={editForm.bio} onChange={e => setEditForm({ ...editForm, bio: e.target.value })} rows={3} maxLength={500} />
+                                    <label style={{ display: 'block', marginBottom: '0.3rem', fontSize: '0.8rem' }}>Bio</label>
+                                    <textarea value={editForm.bio} onChange={e => setEditForm({ ...editForm, bio: e.target.value })} rows={2} maxLength={500} style={{ padding: '0.5rem 0.75rem' }} />
                                 </div>
                                 <div>
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem' }}>Profile Picture URL</label>
-                                    <input value={editForm.profilePictureUrl} onChange={e => setEditForm({ ...editForm, profilePictureUrl: e.target.value })} />
+                                    <label style={{ display: 'block', marginBottom: '0.3rem', fontSize: '0.8rem' }}>Profile Picture URL</label>
+                                    <input value={editForm.profilePictureUrl} onChange={e => setEditForm({ ...editForm, profilePictureUrl: e.target.value })} style={{ padding: '0.5rem 0.75rem' }} />
                                 </div>
 
-                                <div style={{ display: 'flex', gap: '1rem' }}>
-                                    <button type="submit" className="btn-primary" style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--primary-color)', padding: '1rem 2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Check size={18} /> Save</button>
-                                    <button type="button" onClick={() => setIsEditing(false)} className="btn-secondary" style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--bg-tertiary)', padding: '1rem 2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><X size={18} /> Cancel</button>
+                                <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.25rem' }}>
+                                    <button type="submit" className="btn-primary" style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--primary-color)', padding: '0.6rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Check size={16} /> Save</button>
+                                    <button type="button" onClick={() => setIsEditing(false)} className="btn-secondary" style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--bg-tertiary)', padding: '0.6rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><X size={16} /> Cancel</button>
                                 </div>
                             </form>
                         )}
