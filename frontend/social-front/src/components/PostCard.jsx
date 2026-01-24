@@ -1,44 +1,46 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Heart, MessageCircle, MoreHorizontal, User, Trash2 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
+import { Link } from 'react-router-dom';
 
 const PostCard = ({ post, onDelete }) => {
-    const { user } = useAuth();
-    const [liked, setLiked] = useState(false); // Ideally this state comes from backend 'IsLikedByCurrentUser'
+    const { user: currentUser } = useAuth();
+    const [liked, setLiked] = useState(post.isLikedByCurrentUser); // Initialize with backend data
     const [likesCount, setLikesCount] = useState(post.likesCount);
     const [showComments, setShowComments] = useState(false);
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
 
-    const isOwner = user && user.userId === post.userId;
+    const isOwner = currentUser && currentUser.userId === post.userId;
+
+    // Update liked state if post.isLikedByCurrentUser changes (e.g., when new posts are loaded)
+    useEffect(() => {
+        setLiked(post.isLikedByCurrentUser);
+    }, [post.isLikedByCurrentUser]);
 
     const handleLike = async () => {
         // Optimistic update
-        // Note: Backend prevents duplicate likes, so this simple toggle logic is a bit naive but okay for demo
-        // Ideally we need to know if we already liked it.
-        // For now assuming we haven't if we just loaded the page (limit of API)
-        // A better API would return `isLiked` boolean.
-
-        // Let's implement toggle locally but call correct API
         if (liked) {
             setLiked(false);
-            setLikesCount(p => p - 1);
+            setLikesCount(prev => prev - 1);
             try {
                 await api.delete(`/likes/post/${post.postId}`);
             } catch (e) {
+                console.error("Failed to unlike post", e);
                 setLiked(true); // Revert
-                setLikesCount(p => p + 1);
+                setLikesCount(prev => prev + 1);
             }
         } else {
             setLiked(true);
-            setLikesCount(p => p + 1);
+            setLikesCount(prev => prev + 1);
             try {
                 await api.post(`/likes/post/${post.postId}`);
             } catch (e) {
+                console.error("Failed to like post", e);
                 setLiked(false); // Revert
-                setLikesCount(p => p - 1);
+                setLikesCount(prev => prev - 1);
             }
         }
     };
@@ -84,11 +86,15 @@ const PostCard = ({ post, onDelete }) => {
         <div className="card fade-in">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
                 <div style={{ display: 'flex', gap: '1rem' }}>
-                    <div className="avatar">
-                        {post.userProfilePictureUrl ? <img src={post.userProfilePictureUrl} className="avatar" /> : <User size={20} />}
-                    </div>
+                    <Link to={`/profile/${post.userId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <div className="avatar">
+                            {post.userProfilePictureUrl ? <img src={post.userProfilePictureUrl} className="avatar" /> : <User size={20} />}
+                        </div>
+                    </Link>
                     <div>
-                        <div style={{ fontWeight: '600', color: 'var(--text-primary)' }}>{post.username}</div>
+                        <Link to={`/profile/${post.userId}`} style={{ textDecoration: 'none' }}>
+                            <div style={{ fontWeight: '600', color: 'var(--text-primary)' }}>{post.username}</div>
+                        </Link>
                         <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
                             {formatDistanceToNow(new Date(post.timeStamp), { addSuffix: true })}
                         </div>
@@ -101,7 +107,7 @@ const PostCard = ({ post, onDelete }) => {
                 )}
             </div>
 
-            <p style={{ color: 'var(--text-primary)', marginBottom: '1rem', whiteSpace: 'pre-wrap' }}>
+            <p style={{ color: 'var(--text-primary)', marginBottom: '1rem', whiteSpace: 'pre-wrap', textAlign: 'left' }}>
                 {post.content}
             </p>
 
@@ -155,17 +161,21 @@ const PostCard = ({ post, onDelete }) => {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                         {comments.map(c => (
                             <div key={c.commentId} style={{ display: 'flex', gap: '0.75rem' }}>
-                                <div className="avatar" style={{ width: '32px', height: '32px', fontSize: '0.8rem' }}>
-                                    {c.userProfilePictureUrl ? <img src={c.userProfilePictureUrl} className="avatar" /> : c.username[0]}
-                                </div>
+                                <Link to={`/profile/${c.userId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <div className="avatar" style={{ width: '32px', height: '32px', fontSize: '0.8rem' }}>
+                                        {c.userProfilePictureUrl ? <img src={c.userProfilePictureUrl} className="avatar" /> : c.username[0]}
+                                    </div>
+                                </Link>
                                 <div style={{ backgroundColor: 'var(--bg-tertiary)', padding: '0.75rem', borderRadius: 'var(--radius-md)', flex: 1 }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
-                                        <span style={{ fontWeight: '600', fontSize: '0.9rem' }}>{c.username}</span>
+                                        <Link to={`/profile/${c.userId}`} style={{ textDecoration: 'none' }}>
+                                            <span style={{ fontWeight: '600', fontSize: '0.9rem' }}>{c.username}</span>
+                                        </Link>
                                         <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>
                                             {formatDistanceToNow(new Date(c.timeStamp), { addSuffix: true })}
                                         </span>
                                     </div>
-                                    <p style={{ fontSize: '0.9rem' }}>{c.content}</p>
+                                    <p style={{ fontSize: '0.9rem', textAlign: 'left' }}>{c.content}</p>
                                 </div>
                             </div>
                         ))}

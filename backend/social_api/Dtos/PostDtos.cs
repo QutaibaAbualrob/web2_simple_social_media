@@ -28,5 +28,6 @@ namespace SocialMediaAPI.Dtos
         public DateTime TimeStamp { get; set; }
         public int LikesCount { get; set; }
         public int CommentsCount { get; set; }
+        public bool IsLikedByCurrentUser { get; set; }
     }
 }

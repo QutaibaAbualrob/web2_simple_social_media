@@ -23,6 +23,13 @@ namespace SocialMediaAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PostDto>>> GetPosts([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int? currentUserId = null;
+            if (!string.IsNullOrEmpty(userIdStr))
+            {
+                currentUserId = int.Parse(userIdStr);
+            }
+
             if (page < 1) page = 1;
             if (pageSize < 1 || pageSize > 50) pageSize = 10;
 
@@ -44,7 +51,8 @@ namespace SocialMediaAPI.Controllers
                     MediaType = p.MediaType,
                     TimeStamp = p.TimeStamp,
                     LikesCount = p.Likes.Count,
-                    CommentsCount = p.Comments.Count
+                    CommentsCount = p.Comments.Count,
+                    IsLikedByCurrentUser = currentUserId.HasValue && p.Likes.Any(l => l.UserId == currentUserId.Value)
                 })
                 .ToListAsync();
 
@@ -55,6 +63,13 @@ namespace SocialMediaAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<PostDto>> GetPost(int id)
         {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int? currentUserId = null;
+            if (!string.IsNullOrEmpty(userIdStr))
+            {
+                currentUserId = int.Parse(userIdStr);
+            }
+
             var post = await _context.Posts
                 .Include(p => p.User)
                 .Include(p => p.Likes)
@@ -71,7 +86,8 @@ namespace SocialMediaAPI.Controllers
                     MediaType = p.MediaType,
                     TimeStamp = p.TimeStamp,
                     LikesCount = p.Likes.Count,
-                    CommentsCount = p.Comments.Count
+                    CommentsCount = p.Comments.Count,
+                    IsLikedByCurrentUser = currentUserId.HasValue && p.Likes.Any(l => l.UserId == currentUserId.Value)
                 })
                 .FirstOrDefaultAsync();
 
@@ -87,6 +103,13 @@ namespace SocialMediaAPI.Controllers
         [HttpGet("User/{userId}")]
         public async Task<ActionResult<IEnumerable<PostDto>>> GetPostsForUser(int userId, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int? currentUserId = null;
+            if (!string.IsNullOrEmpty(userIdStr))
+            {
+                currentUserId = int.Parse(userIdStr);
+            }
+
             if (page < 1) page = 1;
             if (pageSize < 1 || pageSize > 50) pageSize = 10;
 
@@ -109,7 +132,8 @@ namespace SocialMediaAPI.Controllers
                     MediaType = p.MediaType,
                     TimeStamp = p.TimeStamp,
                     LikesCount = p.Likes.Count,
-                    CommentsCount = p.Comments.Count
+                    CommentsCount = p.Comments.Count,
+                    IsLikedByCurrentUser = currentUserId.HasValue && p.Likes.Any(l => l.UserId == currentUserId.Value)
                 })
                 .ToListAsync();
 
@@ -157,7 +181,8 @@ namespace SocialMediaAPI.Controllers
                 MediaType = post.MediaType,
                 TimeStamp = post.TimeStamp,
                 LikesCount = 0,
-                CommentsCount = 0
+                CommentsCount = 0,
+                IsLikedByCurrentUser = false // A new post, so no one has liked it yet
             };
 
             return CreatedAtAction(nameof(GetPost), new { id = post.PostId }, postDto);
