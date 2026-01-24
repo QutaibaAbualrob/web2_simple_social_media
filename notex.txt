@@ -57,3 +57,8 @@ Sources:
 
     2- Entity Framework Core:
         https://www.youtube.com/playlist?list=PLdo4fOcmZ0oX7uTkjYwvCJDG2qhcSzwZ6
+
+    3- JWT:
+        https://learn.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-10.0
+        https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer?view=aspnetcore-10.0
+        https://learn.microsoft.com/en-us/aspnet/core/security/authorization/limitingidentitybyscheme?view=aspnetcore-10.0

@@ -10,6 +10,11 @@ using SocialMediaAPI.Models;
 namespace SocialMediaAPI.Controllers
 {
     [Authorize(AuthenticationSchemes = AuthSchemes)]
-    class 
+    [ApiController]
+    class LoginController : Controller
+    {
+        
+        
+    }
 
 }
