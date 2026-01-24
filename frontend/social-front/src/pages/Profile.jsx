@@ -5,7 +5,8 @@ import api from '../services/api';
 import { User, Mail, Calendar, Edit2, Check, X, Loader2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { format } from 'date-fns';
-import PostCard from '../components/PostCard'; // Import PostCard
+import PostCard from '../components/PostCard';
+import { parseAsUtc } from '../utils/date';
 
 const Profile = () => {
     const { id } = useParams();
@@ -126,7 +127,7 @@ const Profile = () => {
                                         <Mail size={16} /> {profile.email}
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                        <Calendar size={16} /> Joined {format(new Date(profile.createdAt), 'MMMM yyyy')}
+                                        <Calendar size={16} /> Joined {format(parseAsUtc(profile.createdAt), 'MMMM yyyy')}
                                     </div>
                                 </div>
                             </>

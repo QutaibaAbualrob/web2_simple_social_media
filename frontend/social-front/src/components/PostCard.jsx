@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Heart, MessageCircle, MoreHorizontal, User, Trash2 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { useAuth } from '../context/AuthContext';
+import { parseAsUtc } from '../utils/date';
 import api from '../services/api';
 import { Link } from 'react-router-dom';
 
@@ -96,7 +97,7 @@ const PostCard = ({ post, onDelete }) => {
                             <div style={{ fontWeight: '600', color: 'var(--text-primary)' }}>{post.username}</div>
                         </Link>
                         <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                            {formatDistanceToNow(new Date(post.timeStamp), { addSuffix: true })}
+                            {formatDistanceToNow(parseAsUtc(post.timeStamp), { addSuffix: true })}
                         </div>
                     </div>
                 </div>
@@ -174,7 +175,7 @@ const PostCard = ({ post, onDelete }) => {
                                             <span style={{ fontWeight: '600', fontSize: '0.9rem' }}>{c.username}</span>
                                         </Link>
                                         <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>
-                                            {formatDistanceToNow(new Date(c.timeStamp), { addSuffix: true })}
+                                            {formatDistanceToNow(parseAsUtc(c.timeStamp), { addSuffix: true })}
                                         </span>
                                     </div>
                                     <p style={{ fontSize: '0.9rem', textAlign: 'left' }}>{c.content}</p>
